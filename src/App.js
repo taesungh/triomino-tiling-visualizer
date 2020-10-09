@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Tiler from "./components/tiler";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div className="banner">
+        <h1 className="title">Triomino Tiling Visualizer</h1>
+      </div>
+
+      <Tiler />
+
+      <div className="footer banner">
+        Created by Taesung Hwang for ICS 46. Inspiration and reference code provided by Professor Shindler.
+      </div>
+
     </div>
   );
 }

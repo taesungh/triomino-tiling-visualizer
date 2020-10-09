@@ -1,0 +1,48 @@
+/* bootstrap like buttons */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+/*  font-size: 1rem;*/
+  font-size: min(1rem, calc(0.2rem + 1.5vw));
+  min-height: 0vw;
+  line-height: 1.5;
+  border-radius: .25rem;
+}
+.btn {
+  color: #07f;
+  background-color: #fff;
+  border: 1px solid #acc;
+}
+.btn:not(:disabled) {
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) {
+  color: #05a;
+  background-color: #dee;
+}
+.btn:active:not(:disabled), .btn.active:not(:disabled) {
+  color: #fff;
+  background-color: #07f;
+}
+.btn:disabled {
+/*  color: #677;*/
+  opacity: .65;
+}
+
+small, .small {
+  font-size: 80%;
+  font-weight: 400;
+}
+
+.text-muted {
+  color: #555;
+}
+
+.tiler {
+  padding: 1rem;
+}

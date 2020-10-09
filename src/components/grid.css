@@ -1,0 +1,72 @@
+:root {
+  --inner-border: 0.5px dashed #1117;
+  --cell-border: 1.5px solid black;
+}
+
+.grid {
+  padding: 0;
+  margin: 1rem 2rem;
+}
+
+.grid-table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: auto;
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: var(--cell-border);
+}
+
+.cell-0 {
+  background-color: #000;
+}
+.cell-5 {
+  background-color: #999;
+}
+.cell-1 {
+  background-color: #fb9;
+}
+.cell-2 {
+  background-color: #fe9;
+}
+.cell-3 {
+  background-color: #f9f;
+}
+.cell-4 {
+  background-color: #9fe;
+}
+
+.cell-N {
+  border-bottom: var(--inner-border);
+}
+.cell-S {
+  border-top: var(--inner-border);
+}
+.cell-E {
+  border-left: var(--inner-border);
+}
+.cell-W {
+  border-right: var(--inner-border);
+}
+
+.cell-NE {
+  border-bottom: var(--inner-border);
+  border-left: var(--inner-border);
+}
+.cell-SE {
+  border-top: var(--inner-border);
+  border-left: var(--inner-border);
+}
+.cell-SW {
+  border-top: var(--inner-border);
+  border-right: var(--inner-border);
+}
+.cell-NW {
+  border-bottom: var(--inner-border);
+  border-right: var(--inner-border);
+}
