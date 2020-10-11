@@ -43,13 +43,19 @@ const Tiler = function () {
     }
   }, [running, index]);
 
-
   const maxIndex = tiles.length - 1;
   const controlsProps = { running, setRunning, index, setIndex, maxIndex, speed, setSpeed };
 
 
+  const is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+  const tilerStyle = {
+    "--cell-transition-time": baseSpeed / (1.5 * speed) + "ms",
+    // "--inner-border": is_chrome ? "0.1px solid gray" : "0.5px solid gray",
+    "--cell-border": is_chrome ? "2px solid black" : "1.5px solid black"
+  }
+
   return (
-    <div className="tiler">
+    <div className="tiler" style={tilerStyle}>
       <h4>Click on any cell to start the visualization</h4>
 
       <div className="btn-group" role="group" aria-label="grid size selection">
