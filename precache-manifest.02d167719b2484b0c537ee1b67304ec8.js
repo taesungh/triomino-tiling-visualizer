@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "03d3ac685b7f1f418d7cf718a23bd007",
+    "revision": "d98e51b7b4280f1047bb3816b3fd1f6b",
     "url": "/triomino-tiling-visualizer/index.html"
   },
   {
-    "revision": "f5627cc029abfd4f996a",
-    "url": "/triomino-tiling-visualizer/static/css/main.246655df.chunk.css"
+    "revision": "51f22d933353e0f84248",
+    "url": "/triomino-tiling-visualizer/static/css/main.91617c18.chunk.css"
   },
   {
     "revision": "c5ef89b4b96837329f53",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/triomino-tiling-visualizer/static/js/2.64be495c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f5627cc029abfd4f996a",
+    "revision": "51f22d933353e0f84248",
     "url": "/triomino-tiling-visualizer/static/js/main.46b3d0f6.chunk.js"
   },
   {
