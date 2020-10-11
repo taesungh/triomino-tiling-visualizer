@@ -4,12 +4,16 @@ import "./grid.css";
 
 
 const Grid = function ({n, tiles, tileGrid, index}) {
+  const eK = function (i, j) {
+    const size = Math.pow(2, n);
+    return size * (i + 1) + j;
+  }
   const genGrid = (size) => {
     const grid = [];
     for (let i = 0; i < size; ++i) {
       grid[i] = new Array(size);
       for (let j = 0; j < size; ++j) {
-        grid[i][j] = <td className="cell" onClick={() => tileGrid(j, i)}/>;
+        grid[i][j] = <td className="cell" onClick={() => tileGrid(j, i)} key={eK(i, j)}/>;
       }
     }
     return grid;
@@ -23,30 +27,30 @@ const Grid = function ({n, tiles, tileGrid, index}) {
   const inputGridTile = function (type, x, y, index) {
     switch (type) {
       case 0:
-        grid[y][x] = <td className="cell cell-0" />;
+        grid[y][x] = <td key={eK(y, x)} className="cell cell-0" />;
         break;
       case 5:
-        grid[y][x] = <td className="cell cell-5" />;
+        grid[y][x] = <td key={eK(y, x)} className="cell cell-5" />;
         break;
       case 3:
-        grid[y][x + 1] = <td className="cell cell-1 cell-N"/>;
-        grid[y + 1][x] = <td className="cell cell-1 cell-W" />;
-        grid[y+1][x+1] = <td className="cell cell-1 cell-SE" />;
+        grid[y][x + 1] = <td key={eK(y, x+1)} className="cell cell-1 cell-N"/>;
+        grid[y + 1][x] = <td key={eK(y+1, x)} className="cell cell-1 cell-W" />;
+        grid[y+1][x+1] = <td key={eK(y+1, x+1)} className="cell cell-1 cell-SE" />;
         break;
       case 4:
-        grid[y][x - 1] = <td className="cell cell-2 cell-N"/>;
-        grid[y + 1][x] = <td className="cell cell-2 cell-E"/>;
-        grid[y+1][x-1] = <td className="cell cell-2 cell-SW"/>;
+        grid[y][x - 1] = <td key={eK(y, x-1)} className="cell cell-2 cell-N"/>;
+        grid[y + 1][x] = <td key={eK(y+1, x)} className="cell cell-2 cell-E"/>;
+        grid[y+1][x-1] = <td key={eK(y+1, x-1)} className="cell cell-2 cell-SW"/>;
         break;
       case 1:
-        grid[y][x - 1] = <td className="cell cell-3 cell-S"/>;
-        grid[y - 1][x] = <td className="cell cell-3 cell-E"/>;
-        grid[y-1][x-1] = <td className="cell cell-3 cell-NW"/>;
+        grid[y][x - 1] = <td key={eK(y, x-1)} className="cell cell-3 cell-S"/>;
+        grid[y - 1][x] = <td key={eK(y-1, x)} className="cell cell-3 cell-E"/>;
+        grid[y-1][x-1] = <td key={eK(y-1, x-1)} className="cell cell-3 cell-NW"/>;
         break;
       case 2:
-        grid[y][x + 1] = <td className="cell cell-4 cell-S"/>;
-        grid[y - 1][x] = <td className="cell cell-4 cell-W"/>;
-        grid[y-1][x+1] = <td className="cell cell-4 cell-NE"/>;
+        grid[y][x + 1] = <td key={eK(y, x+1)} className="cell cell-4 cell-S"/>;
+        grid[y - 1][x] = <td key={eK(y-1, x)} className="cell cell-4 cell-W"/>;
+        grid[y-1][x+1] = <td key={eK(y-1, x+1)} className="cell cell-4 cell-NE"/>;
         break;
       default:
         break;
@@ -61,7 +65,7 @@ const Grid = function ({n, tiles, tileGrid, index}) {
       for (let i = 0; i < size; ++i) {
         grid[i] = new Array(size);
         for (let j = 0; j < size; ++j) {
-          grid[i][j] = <td className="cell" onClick={() => tileGrid(j, i)}/>;
+          grid[i][j] = <td className="cell" onClick={() => tileGrid(j, i)} key={eK(i, j)}/>;
         }
       }
     };
@@ -78,6 +82,7 @@ const Grid = function ({n, tiles, tileGrid, index}) {
       }
     } else {
       resetGrid(grid, Math.pow(2, n));
+      // setGrid(genGrid(Math.pow(2, n)));
       for (let i = 0; i <= index; ++i) {
         drawTile(i);
       }
@@ -93,8 +98,7 @@ const Grid = function ({n, tiles, tileGrid, index}) {
     const handleResize = () => {
       const gridWidth = gridRef.current.clientWidth;
       // need to subtract twice the cell border width
-      // setCellSize(`min(${gridWidth / Math.pow(2, n) - 3}px, ${15 / Math.pow(2, n) + 1}rem)`)
-      setCellSize(gridWidth);
+      setCellSize(`min(${gridWidth / Math.pow(2, n) - 3}px, ${15 / Math.pow(2, n) + 1}rem)`)
     };
 
     handleResize();
@@ -107,18 +111,16 @@ const Grid = function ({n, tiles, tileGrid, index}) {
   }, [n]);
 
   const gridStyle = {
-    // "--cell-width": cellSize,
-    // "--cell-height": cellSize
-    width: 15 + 1 * Math.pow(2, n) + "rem",
-    height: "min(" + (15 + 1 * Math.pow(2, n)) + "rem, " + cellSize + "px)"
+    "--cell-width": cellSize,
+    "--cell-height": cellSize
   };
 
   return (
     <div className="grid" ref={gridRef}>
-    <table className="grid-table fade-in" style={gridStyle}>
+    <table className="grid-table fade-in" style={gridStyle} key={n}>
         <tbody>
           {grid.map((row, i) => (
-            <tr>
+            <tr key={i}>
               {row}
             </tr>
           ))}
