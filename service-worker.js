@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/triomino-tiling-visualizer/precache-manifest.02d167719b2484b0c537ee1b67304ec8.js"
+  "/triomino-tiling-visualizer/precache-manifest.b2fdf0fe7bec58aa231ef6b4f200ce9c.js"
 );
 
 self.addEventListener('message', (event) => {
