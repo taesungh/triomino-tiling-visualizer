@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/triomino-tiling-visualizer/static/css/main.bb0b7b04.chunk.css",
-    "main.js": "/triomino-tiling-visualizer/static/js/main.6bcc6156.chunk.js",
+    "main.css": "/triomino-tiling-visualizer/static/css/main.b4048f67.chunk.css",
+    "main.js": "/triomino-tiling-visualizer/static/js/main.2a84bd08.chunk.js",
     "runtime-main.js": "/triomino-tiling-visualizer/static/js/runtime-main.a279b5bd.js",
     "static/js/2.64be495c.chunk.js": "/triomino-tiling-visualizer/static/js/2.64be495c.chunk.js",
     "index.html": "/triomino-tiling-visualizer/index.html",
-    "precache-manifest.90a0d002a6775fd0055b56c152fc25dd.js": "/triomino-tiling-visualizer/precache-manifest.90a0d002a6775fd0055b56c152fc25dd.js",
+    "precache-manifest.03abdbc55da08d564a51bf91ecb481e3.js": "/triomino-tiling-visualizer/precache-manifest.03abdbc55da08d564a51bf91ecb481e3.js",
     "service-worker.js": "/triomino-tiling-visualizer/service-worker.js",
     "static/js/2.64be495c.chunk.js.LICENSE.txt": "/triomino-tiling-visualizer/static/js/2.64be495c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a279b5bd.js",
     "static/js/2.64be495c.chunk.js",
-    "static/css/main.bb0b7b04.chunk.css",
-    "static/js/main.6bcc6156.chunk.js"
+    "static/css/main.b4048f67.chunk.css",
+    "static/js/main.2a84bd08.chunk.js"
   ]
 }
