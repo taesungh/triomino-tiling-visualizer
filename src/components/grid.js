@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { classNames } from "../services/util";
 import "./grid.css";
 
 
@@ -53,17 +54,68 @@ const Grid = function ({n, tiles, tileGrid, index}) {
   }
 
 
+  const [lastIndex, setLastIndex] = useState(index);
   useEffect(() => {
-    if (index >= 0) {
-      const [type, x, y] = tiles[index];
-      inputGridTile(type, x, y);
+    // console.log("lastIndex, index", lastIndex, index, tiles.length);
+    const resetGrid = (grid, size) => {
+      for (let i = 0; i < size; ++i) {
+        grid[i] = new Array(size);
+        for (let j = 0; j < size; ++j) {
+          grid[i][j] = <td className="cell" onClick={() => tileGrid(j, i)}/>;
+        }
+      }
+    };
+    const drawTile = function (i) {
+      if (i < tiles.length) {
+        const [type, x, y] = tiles[i];
+        inputGridTile(type, x, y);
+      }
+    };
+
+    if (lastIndex <= index) {
+      for (let i = 1; i < index - lastIndex + 1; ++i) {
+        drawTile(lastIndex + i);
+      }
+    } else {
+      resetGrid(grid, Math.pow(2, n));
+      for (let i = 0; i <= index; ++i) {
+        drawTile(i);
+      }
     }
+    setLastIndex(index);
+
   }, [index]);
 
 
+  const [cellSize, setCellSize] = useState(0);
+  const gridRef = useRef(null);
+  useEffect(() => {
+    const handleResize = () => {
+      const gridWidth = gridRef.current.clientWidth;
+      // need to subtract twice the cell border width
+      // setCellSize(`min(${gridWidth / Math.pow(2, n) - 3}px, ${15 / Math.pow(2, n) + 1}rem)`)
+      setCellSize(gridWidth);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    // auto clean-up when no longer used
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, [n]);
+
+  const gridStyle = {
+    // "--cell-width": cellSize,
+    // "--cell-height": cellSize
+    width: 15 + 1 * Math.pow(2, n) + "rem",
+    height: "min(" + (15 + 1 * Math.pow(2, n)) + "rem, " + cellSize + "px)"
+  };
+
   return (
-    <div className="grid">
-    <table className="grid-table">
+    <div className="grid" ref={gridRef}>
+    <table className="grid-table fade-in" style={gridStyle}>
         <tbody>
           {grid.map((row, i) => (
             <tr>
